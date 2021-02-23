@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Students</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class Rank</th>
+      <th>Name</th>
+      <th>Roll no</th>
+      <th>Fathers name</th>
+      <th>Cgpa</th>
+      <th>College id</th>
+      <th>Last semester</th>
+      <th>Result<th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.class_rank %></td>
+        <td><%= student.name %></td>
+        <td><%= student.roll_no %></td>
+        <td><%= student.fathers_name %></td>
+        <td><%= student.CGPA %></td>
+        <td><%= student.college_ID %></td>
+        <td><%= student.last_semester %></td>
+        <td><%= link_to "Result", student %></td>
+        <% if is_admin? %>
+          <td><%= link_to 'Edit', edit_student_path(student) %></td>
+          <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if is_admin? %>
+  <%= link_to 'New Student', new_student_path %>
+<% end %>
+<%= link_to "Home", home_index_path %>
+<%= link_to "Download data in CSV", '/students.csv' %>

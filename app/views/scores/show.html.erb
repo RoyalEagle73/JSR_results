@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Semester:</strong>
+  <%= @score.semester_id %>
+</p>
+
+<p>
+  <strong>Marks:</strong>
+  <%= @score.marks %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @score.subject_id %>
+</p>
+
+<%= link_to 'Edit', edit_score_path(@score) %> |
+<%= link_to 'Back', scores_path %>

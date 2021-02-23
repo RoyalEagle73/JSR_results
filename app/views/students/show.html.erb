@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+<h1>Student Details</h1>
+
+<h2>
+  <strong>Name:</strong>
+  <h3><%= @student.name %></h3>
+</h2>
+
+<h2>
+  <strong>Roll no:</strong>
+  <h3><%= @student.roll_no %>
+</h2>
+
+<h2>
+  <strong>Fathers name:</strong>
+  <h3><%= @student.fathers_name %>
+</h2>
+
+<h2>
+  <strong>Cgpa:</strong>
+  <h3><%= @student.CGPA %>
+</h2>
+
+<h2>
+  <strong>College id:</strong>
+  <h3><%= @student.college_ID %>
+</h2>
+
+<h2>
+  <strong>Last semester attended:</strong>
+  <h3><%= @student.last_semester %>
+</h2>
+<br>
+
+<h1>Result</h1>
+<% @student.semester.each do |semester| %>
+  <h2><%= "Semester - #{semester.semester_number}" %></ h2>
+  <h3><%= " SGPA: #{semester.sgpa}" %></h3>
+  <table>
+    <tr>
+      <th>Subject Name</th>
+      <th>Subject Code</th>
+      <th>Subject Marks</th>
+      <th>Subject Grade</th>
+    </tr>
+    <% semester.score.each do |result| %>
+      <tr>
+        <td><%= result.subject.name %></td>
+        <td><%= result.subject.code %></td>
+        <td><%= result.marks %></td>
+        <td><%= result.grade %></td>
+      </tr>
+    <% end %>
+  </table>
+  <br>
+<% end %>
+
+<% if is_admin? %>
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<% end %>
+<%= link_to 'Back', students_path %>

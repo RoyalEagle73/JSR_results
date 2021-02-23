@@ -1,0 +1,15 @@
+<% if request.post? %>
+    <h4 style="color:green"><%= flash.alert %></h4>
+<% end %>
+<% unless session[:user_id].nil? %>
+    <h1><%= "Hello #{User.find(session[:user_id]).username}, Welcome to Student Portal" %></h1>
+    <br>
+    <% if is_admin? %>
+        <h2><%= link_to "Admin Portal", home_admin_path %></h2>
+    <% end %>
+    <h2><%= link_to "Students List", students_path %></h2>
+    <h2><%= link_to "logout", home_logout_path %></h2>
+<% else %>
+    <h1>Welcome to Student Portal</h1>
+    <h2><%= link_to "LogIn", home_login_path %></h2>
+<% end %>

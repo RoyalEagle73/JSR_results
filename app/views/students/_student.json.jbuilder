@@ -1,0 +1,1 @@
+json.extract! student, :name, :roll_no, :fathers_name, :CGPA, :college_ID, :last_semester
